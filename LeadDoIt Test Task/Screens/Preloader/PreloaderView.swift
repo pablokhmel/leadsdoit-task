@@ -10,7 +10,7 @@ struct PreloaderView: View {
     var body: some View {
         VStack {
             if isActive {
-                ContentView()
+                HomeView()
             } else {
                 ZStack {
                     VStack {
