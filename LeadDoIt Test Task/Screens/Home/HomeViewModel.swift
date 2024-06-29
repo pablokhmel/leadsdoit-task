@@ -1,9 +1,7 @@
 import Foundation
 
 class HomeViewModel: ObservableObject {
-    @Published var currentRover: RoverType = .all
-    @Published var currentCamera: CameraType = .all
-    @Published var currentDate: Date = Date()
+    @Published var filterOptions: FilterOptions = .defaultOptions
 
     private var filterManager: IFilterManager?
 
@@ -13,11 +11,11 @@ class HomeViewModel: ObservableObject {
 
     func getFilters<T : Filterable>() -> [T] {
         if T.self == CameraType.self {
-            return (filterManager?.getAvailableCameras(for: currentRover) as? [T]) ?? []
+            return (filterManager?.getAvailableCameras(for: filterOptions.rover) as? [T]) ?? []
         }
 
         if T.self == RoverType.self {
-            return (filterManager?.getAvailableRovers(for: currentCamera) as? [T]) ?? []
+            return (filterManager?.getAvailableRovers(for: filterOptions.camera) as? [T]) ?? []
         }
 
         return []

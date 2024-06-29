@@ -9,11 +9,7 @@ struct HomeView: View {
     var body: some View {
         ZStack {
             VStack {
-                HomeHeaderView(
-                    currentDate: $viewModel.currentDate,
-                    currentRover: $viewModel.currentRover,
-                    currentCamera: $viewModel.currentCamera
-                )
+                HomeHeaderView(currentFilter: $viewModel.filterOptions)
                 .roverAction {
                     guard filterType == .none else { return }
                     withAnimation {
@@ -50,7 +46,7 @@ struct HomeView: View {
     private func createFilterWheelView() -> some View {
         switch filterType {
         case .camera:
-            FilterWheelView(text: "Camera", $viewModel.currentCamera, filters: viewModel.getFilters())
+            FilterWheelView(text: "Camera", $viewModel.filterOptions.camera, filters: viewModel.getFilters())
                 .onHide {
                     withAnimation {
                         filterType = .none
@@ -58,7 +54,7 @@ struct HomeView: View {
                 }
 
         case .rover:
-            FilterWheelView(text: "Rover", $viewModel.currentRover, filters: viewModel.getFilters())
+            FilterWheelView(text: "Rover", $viewModel.filterOptions.rover, filters: viewModel.getFilters())
                 .onHide {
                     withAnimation {
                         filterType = .none

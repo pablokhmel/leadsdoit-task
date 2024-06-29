@@ -1,9 +1,7 @@
 import SwiftUI
 
 struct HomeHeaderView: View {
-    @Binding var currentDate: Date
-    @Binding var currentRover: RoverType
-    @Binding var currentCamera: CameraType
+    @Binding var filterOptions: FilterOptions
 
     var roverAction: () -> Void = {}
     var cameraAction: () -> Void = {}
@@ -11,14 +9,8 @@ struct HomeHeaderView: View {
     private var plusButtonSide: CGFloat = 38
     private var showCameraFilter = false
 
-    init(
-        currentDate: Binding<Date>, 
-        currentRover: Binding<RoverType>,
-        currentCamera: Binding<CameraType>
-    ) {
-        self._currentDate = currentDate
-        self._currentRover = currentRover
-        self._currentCamera = currentCamera
+    init(currentFilter: Binding<FilterOptions>) {
+        _filterOptions = currentFilter
     }
 
     var body: some View {
@@ -43,8 +35,8 @@ struct HomeHeaderView: View {
 
                 HStack(spacing: 23) {
                     HStack(spacing: 12) {
-                        FilterButton(image: Image.rover, action: roverAction, text: currentRover.abbreviated)
-                        FilterButton(image: Image.camera, action: cameraAction, text: currentCamera.abbreviated)
+                        FilterButton(image: Image.rover, action: roverAction, text: filterOptions.rover.abbreviated)
+                        FilterButton(image: Image.camera, action: cameraAction, text: filterOptions.camera.abbreviated)
                     }
 
                     Button {
@@ -86,9 +78,5 @@ struct HomeHeaderView: View {
 }
 
 #Preview {
-    HomeHeaderView(
-        currentDate: .constant(Date()),
-        currentRover: .constant(.all),
-        currentCamera: .constant(.all)
-    )
+    HomeHeaderView(currentFilter: .constant(.defaultOptions))
 }
