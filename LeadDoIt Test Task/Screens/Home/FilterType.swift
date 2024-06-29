@@ -8,5 +8,5 @@
 import Foundation
 
 enum FilterType {
-    case none, camera, rover
+    case none, camera, rover, date
 }

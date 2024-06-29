@@ -10,35 +10,54 @@ struct HomeView: View {
         ZStack {
             VStack {
                 HomeHeaderView(currentFilter: $viewModel.filterOptions)
-                .roverAction {
-                    guard filterType == .none else { return }
-                    withAnimation {
-                        filterType = .rover
+                    .roverAction {
+                        withAnimation {
+                            filterType = .rover
+                        }
                     }
-                }
-                .cameraAction {
-                    guard filterType == .none else { return }
-                    withAnimation {
-                        filterType = .camera
+                    .cameraAction {
+                        withAnimation {
+                            filterType = .camera
+                        }
                     }
-                }
-                .frame(height: 148)
+                    .dateAction {
+                        withAnimation {
+                            filterType = .date
+                        }
+                    }
+                    .disabled(filterType != .none)
+                    .frame(height: 148)
 
                 Spacer()
             }
             .onAppear {
                 viewModel.setup(with: filterManager)
             }
+            .disabled(filterType != .none)
 
             VStack {
                 Spacer()
 
-                if filterType != .none {
+                if filterType == .camera || filterType == .rover {
                     createFilterWheelView()
                         .transition(.move(edge: .bottom))
                 }
             }
             .ignoresSafeArea()
+
+            if filterType == .date {
+                Color.black.opacity(0.4)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .ignoresSafeArea()
+
+                ZStack {
+                    DateFilterWheelView(date: $viewModel.filterOptions.date)
+                        .hide {
+                            filterType = .none
+                        }
+                        .padding(20)
+                }
+            }
         }
     }
 
@@ -61,7 +80,7 @@ struct HomeView: View {
                     }
                 }
 
-        case .none:
+        case .none, .date:
             EmptyView()
         }
     }

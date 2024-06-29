@@ -5,6 +5,7 @@ struct HomeHeaderView: View {
 
     var roverAction: () -> Void = {}
     var cameraAction: () -> Void = {}
+    var dateAction: () -> Void = {}
 
     private var plusButtonSide: CGFloat = 38
     private var showCameraFilter = false
@@ -30,7 +31,11 @@ struct HomeHeaderView: View {
 
                     Spacer()
 
-                    Image.calendar
+                    Button {
+                        dateAction()
+                    } label: {
+                        Image.calendar
+                    }
                 }
 
                 HStack(spacing: 23) {
@@ -61,7 +66,7 @@ struct HomeHeaderView: View {
         let formatter = DateFormatter()
         formatter.dateStyle = .long
         formatter.dateFormat = "dd MMMM, y"
-        return formatter.string(from: Date())
+        return formatter.string(from: filterOptions.date)
     }
 
     func roverAction(_ action: @escaping () -> Void) -> HomeHeaderView {
@@ -73,6 +78,12 @@ struct HomeHeaderView: View {
     func cameraAction(_ action: @escaping () -> Void) -> HomeHeaderView {
         var copy = self
         copy.cameraAction = action
+        return copy
+    }
+
+    func dateAction(_ action: @escaping () -> Void) -> HomeHeaderView {
+        var copy = self
+        copy.dateAction = action
         return copy
     }
 }
