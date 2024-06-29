@@ -17,5 +17,9 @@ extension Font {
         static var title: Font {
             Font.system(size: 22, weight: .regular)
         }
+
+        static var body: Font {
+            Font.system(size: 16, weight: .regular)
+        }
     }
 }

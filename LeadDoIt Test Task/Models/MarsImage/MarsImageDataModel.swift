@@ -1,13 +1,8 @@
-//
-//  MarsImageDataModel.swift
-//  LeadDoIt Test Task
-//
-//  Created by MacBook on 27.06.2024.
-//
-
 import Foundation
 
-import Foundation
+struct MarsPhotosResponse: Decodable {
+    let photos: [MarsImageDataModel]
+}
 
 struct MarsImageDataModel: Decodable {
     let id: Int
@@ -27,15 +22,11 @@ struct MarsImageDataModel: Decodable {
     }
 
     struct Camera: Decodable {
-        let id: Int
         let name: String
-        let roverId: Int
         let fullName: String
 
         enum CodingKeys: String, CodingKey {
-            case id
             case name
-            case roverId = "rover_id"
             case fullName = "full_name"
         }
     }

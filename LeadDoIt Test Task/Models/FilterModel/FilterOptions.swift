@@ -1,6 +1,6 @@
 import Foundation
 
-struct FilterOptions {
+struct FilterOptions: Equatable {
     var camera: CameraType
     var rover: RoverType
     var date: Date

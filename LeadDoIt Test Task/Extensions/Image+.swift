@@ -31,4 +31,8 @@ extension Image {
     static var tick: Image {
         Image("Tick")
     }
+
+    static var empty: Image {
+        Image("empty")
+    }
 }

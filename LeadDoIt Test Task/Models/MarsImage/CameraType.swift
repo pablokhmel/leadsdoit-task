@@ -3,6 +3,17 @@ import Foundation
 enum CameraType: CaseIterable, Filterable {
     case all, fhaz, rhaz, mast, chemcam, mahli, mardi, navcam, pancam, minites
 
+    init(_ name: String) {
+        for curCase in Self.allCases {
+            if name == curCase.abbreviated {
+                self = curCase
+                return
+            }
+        }
+
+        self = .all
+    }
+
     var asString: String {
         switch self {
         case .all:
@@ -50,6 +61,31 @@ enum CameraType: CaseIterable, Filterable {
             "PANCAM"
         case .minites:
             "MINITES"
+        }
+    }
+
+    var asParameter: String {
+        switch self {
+        case .all:
+            "all"
+        case .fhaz:
+            "fhaz"
+        case .rhaz:
+            "rhaz"
+        case .mast:
+            "mast"
+        case .chemcam:
+            "chemcam"
+        case .mahli:
+            "mahli"
+        case .mardi:
+            "mardi"
+        case .navcam:
+            "navcam"
+        case .pancam:
+            "pancam"
+        case .minites:
+            "minites"
         }
     }
 }

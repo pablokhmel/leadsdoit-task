@@ -6,6 +6,7 @@ struct LeadDoIt_Test_TaskApp: App {
         WindowGroup {
             PreloaderView()
                 .environmentObject(FilterManager())
+                .environmentObject(NetworkManager())
         }
     }
 }
