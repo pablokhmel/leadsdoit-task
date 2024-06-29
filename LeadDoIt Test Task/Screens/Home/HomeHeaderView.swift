@@ -1,14 +1,25 @@
-//
-//  HomeHeaderView.swift
-//  LeadDoIt Test Task
-//
-//  Created by MacBook on 27.06.2024.
-//
-
 import SwiftUI
 
 struct HomeHeaderView: View {
+    @Binding var currentDate: Date
+    @Binding var currentRover: RoverType
+    @Binding var currentCamera: CameraType
+
+    var roverAction: () -> Void = {}
+    var cameraAction: () -> Void = {}
+
     private var plusButtonSide: CGFloat = 38
+    private var showCameraFilter = false
+
+    init(
+        currentDate: Binding<Date>, 
+        currentRover: Binding<RoverType>,
+        currentCamera: Binding<CameraType>
+    ) {
+        self._currentDate = currentDate
+        self._currentRover = currentRover
+        self._currentCamera = currentCamera
+    }
 
     var body: some View {
         ZStack {
@@ -32,9 +43,8 @@ struct HomeHeaderView: View {
 
                 HStack(spacing: 23) {
                     HStack(spacing: 12) {
-                        FilterButton(image: Image.rover)
-
-                        FilterButton(image: Image.camera)
+                        FilterButton(image: Image.rover, action: roverAction, text: currentRover.abbreviated)
+                        FilterButton(image: Image.camera, action: cameraAction, text: currentCamera.abbreviated)
                     }
 
                     Button {
@@ -52,6 +62,7 @@ struct HomeHeaderView: View {
             .padding([.leading, .trailing], 20)
         }
         .foregroundStyle(Color.layerOne)
+    
     }
 
     private func getCurrentDateAsString() -> String {
@@ -61,33 +72,23 @@ struct HomeHeaderView: View {
         return formatter.string(from: Date())
     }
 
+    func roverAction(_ action: @escaping () -> Void) -> HomeHeaderView {
+        var copy = self
+        copy.roverAction = action
+        return copy
+    }
+
+    func cameraAction(_ action: @escaping () -> Void) -> HomeHeaderView {
+        var copy = self
+        copy.cameraAction = action
+        return copy
+    }
 }
 
 #Preview {
-    HomeHeaderView()
-}
-
-struct FilterButton: View {
-    let image: Image
-
-    var body: some View {
-        Button {
-            
-        } label: {
-            HStack(spacing: 6) {
-                image
-
-                Text("All")
-                    .font(Font.CustomFonts.bodyTwo)
-                
-                Spacer()
-            }
-            .padding(7)
-            .frame(maxWidth: .infinity)
-            .background {
-                RoundedRectangle(cornerRadius: 10)
-                    .fill(Color.backgroundOne)
-            }
-        }
-    }
+    HomeHeaderView(
+        currentDate: .constant(Date()),
+        currentRover: .constant(.all),
+        currentCamera: .constant(.all)
+    )
 }

@@ -23,4 +23,12 @@ extension Image {
     static var rover: Image {
         Image("Rover")
     }
+
+    static var close: Image {
+        Image("Close")
+    }
+
+    static var tick: Image {
+        Image("Tick")
+    }
 }

@@ -7,16 +7,9 @@
 
 import SwiftUI
 
-enum RoverType {
-    var asString: String {
-        return ""
-    }
-}
-
-enum CameraType {
-    var asString: String {
-        return ""
-    }
+protocol Filterable: Hashable {
+    var asString: String { get }
+    var abbreviated: String { get }
 }
 
 struct MarsImageModel {

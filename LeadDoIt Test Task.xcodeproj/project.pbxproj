@@ -18,6 +18,14 @@
 		FA4069142C2DF62400B61EAB /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4069132C2DF62400B61EAB /* HomeView.swift */; };
 		FA4069162C2DF68000B61EAB /* HomeHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4069152C2DF68000B61EAB /* HomeHeaderView.swift */; };
 		FA4069182C2DF70A00B61EAB /* Font+.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4069172C2DF70A00B61EAB /* Font+.swift */; };
+		FABD094C2C30143C007A87B6 /* RoverType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABD094B2C30143C007A87B6 /* RoverType.swift */; };
+		FABD094E2C301453007A87B6 /* CameraType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABD094D2C301453007A87B6 /* CameraType.swift */; };
+		FABD09502C301B12007A87B6 /* UnevenRoundedRectangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABD094F2C301B12007A87B6 /* UnevenRoundedRectangle.swift */; };
+		FABD09532C301CED007A87B6 /* FilterOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABD09522C301CED007A87B6 /* FilterOptions.swift */; };
+		FAC0435D2C2EF97E007CA504 /* FilterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC0435C2C2EF97E007CA504 /* FilterButton.swift */; };
+		FAC043602C2EF9DC007CA504 /* IFilterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC0435F2C2EF9DC007CA504 /* IFilterManager.swift */; };
+		FAC043622C2F073B007CA504 /* FilterWheelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC043612C2F073B007CA504 /* FilterWheelView.swift */; };
+		FAC07BCF2C2F460900B40F74 /* FilterType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC07BCE2C2F460900B40F74 /* FilterType.swift */; };
 		FAC1512D2C2E044B00ADB44B /* Image+.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC1512C2C2E044B00ADB44B /* Image+.swift */; };
 		FAC1512F2C2E0BE300ADB44B /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC1512E2C2E0BE300ADB44B /* HomeViewModel.swift */; };
 		FAC151312C2E0C8B00ADB44B /* MarsImageDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC151302C2E0C8B00ADB44B /* MarsImageDataModel.swift */; };
@@ -37,6 +45,14 @@
 		FA4069152C2DF68000B61EAB /* HomeHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeaderView.swift; sourceTree = "<group>"; };
 		FA4069172C2DF70A00B61EAB /* Font+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+.swift"; sourceTree = "<group>"; };
 		FA40691B2C2DFBFE00B61EAB /* LeadDoIt-Test-Task-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "LeadDoIt-Test-Task-Info.plist"; sourceTree = SOURCE_ROOT; };
+		FABD094B2C30143C007A87B6 /* RoverType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoverType.swift; sourceTree = "<group>"; };
+		FABD094D2C301453007A87B6 /* CameraType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraType.swift; sourceTree = "<group>"; };
+		FABD094F2C301B12007A87B6 /* UnevenRoundedRectangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnevenRoundedRectangle.swift; sourceTree = "<group>"; };
+		FABD09522C301CED007A87B6 /* FilterOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterOptions.swift; sourceTree = "<group>"; };
+		FAC0435C2C2EF97E007CA504 /* FilterButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterButton.swift; sourceTree = "<group>"; };
+		FAC0435F2C2EF9DC007CA504 /* IFilterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IFilterManager.swift; sourceTree = "<group>"; };
+		FAC043612C2F073B007CA504 /* FilterWheelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterWheelView.swift; sourceTree = "<group>"; };
+		FAC07BCE2C2F460900B40F74 /* FilterType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterType.swift; sourceTree = "<group>"; };
 		FAC1512C2C2E044B00ADB44B /* Image+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+.swift"; sourceTree = "<group>"; };
 		FAC1512E2C2E0BE300ADB44B /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		FAC151302C2E0C8B00ADB44B /* MarsImageDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarsImageDataModel.swift; sourceTree = "<group>"; };
@@ -74,6 +90,7 @@
 		FA4068F02C2DE34600B61EAB /* LeadDoIt Test Task */ = {
 			isa = PBXGroup;
 			children = (
+				FAC0435E2C2EF9BB007CA504 /* Managers */,
 				FAC151342C2E0CA400ADB44B /* Models */,
 				FA40691B2C2DFBFE00B61EAB /* LeadDoIt-Test-Task-Info.plist */,
 				FA4069082C2DEE3000B61EAB /* Assets */,
@@ -136,13 +153,34 @@
 				FA4069132C2DF62400B61EAB /* HomeView.swift */,
 				FA4069152C2DF68000B61EAB /* HomeHeaderView.swift */,
 				FAC1512E2C2E0BE300ADB44B /* HomeViewModel.swift */,
+				FAC0435C2C2EF97E007CA504 /* FilterButton.swift */,
+				FAC043612C2F073B007CA504 /* FilterWheelView.swift */,
+				FAC07BCE2C2F460900B40F74 /* FilterType.swift */,
+				FABD094F2C301B12007A87B6 /* UnevenRoundedRectangle.swift */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		FABD09512C301CC2007A87B6 /* FilterModel */ = {
+			isa = PBXGroup;
+			children = (
+				FABD09522C301CED007A87B6 /* FilterOptions.swift */,
+			);
+			path = FilterModel;
+			sourceTree = "<group>";
+		};
+		FAC0435E2C2EF9BB007CA504 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				FAC0435F2C2EF9DC007CA504 /* IFilterManager.swift */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 		FAC151342C2E0CA400ADB44B /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				FABD09512C301CC2007A87B6 /* FilterModel */,
 				FAC151352C2E0CB600ADB44B /* MarsImage */,
 			);
 			path = Models;
@@ -153,6 +191,8 @@
 			children = (
 				FAC151302C2E0C8B00ADB44B /* MarsImageDataModel.swift */,
 				FAC151322C2E0C9900ADB44B /* MarsImageModel.swift */,
+				FABD094B2C30143C007A87B6 /* RoverType.swift */,
+				FABD094D2C301453007A87B6 /* CameraType.swift */,
 			);
 			path = MarsImage;
 			sourceTree = "<group>";
@@ -234,16 +274,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAC043602C2EF9DC007CA504 /* IFilterManager.swift in Sources */,
 				FA4069162C2DF68000B61EAB /* HomeHeaderView.swift in Sources */,
 				FAC1512F2C2E0BE300ADB44B /* HomeViewModel.swift in Sources */,
 				FA4069182C2DF70A00B61EAB /* Font+.swift in Sources */,
+				FABD094E2C301453007A87B6 /* CameraType.swift in Sources */,
 				FA4069012C2DEA6D00B61EAB /* Color+.swift in Sources */,
+				FAC07BCF2C2F460900B40F74 /* FilterType.swift in Sources */,
 				FAC151312C2E0C8B00ADB44B /* MarsImageDataModel.swift in Sources */,
 				FA40690F2C2DEF4F00B61EAB /* LottieView.swift in Sources */,
 				FAC151332C2E0C9900ADB44B /* MarsImageModel.swift in Sources */,
+				FAC043622C2F073B007CA504 /* FilterWheelView.swift in Sources */,
+				FABD094C2C30143C007A87B6 /* RoverType.swift in Sources */,
+				FAC0435D2C2EF97E007CA504 /* FilterButton.swift in Sources */,
+				FABD09532C301CED007A87B6 /* FilterOptions.swift in Sources */,
 				FA4069142C2DF62400B61EAB /* HomeView.swift in Sources */,
 				FAC1512D2C2E044B00ADB44B /* Image+.swift in Sources */,
 				FA4068F22C2DE34600B61EAB /* LeadDoIt_Test_TaskApp.swift in Sources */,
+				FABD09502C301B12007A87B6 /* UnevenRoundedRectangle.swift in Sources */,
 				FA4069032C2DEC0C00B61EAB /* PreloaderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

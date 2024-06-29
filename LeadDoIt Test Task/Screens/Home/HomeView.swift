@@ -1,18 +1,77 @@
 import SwiftUI
 
 struct HomeView: View {
+    @ObservedObject private var viewModel = HomeViewModel()
+    @EnvironmentObject private var filterManager: FilterManager
+
+    @State var filterType: FilterType = .none
+
     var body: some View {
-        VStack {
-            HomeHeaderView()
+        ZStack {
+            VStack {
+                HomeHeaderView(
+                    currentDate: $viewModel.currentDate,
+                    currentRover: $viewModel.currentRover,
+                    currentCamera: $viewModel.currentCamera
+                )
+                .roverAction {
+                    guard filterType == .none else { return }
+                    withAnimation {
+                        filterType = .rover
+                    }
+                }
+                .cameraAction {
+                    guard filterType == .none else { return }
+                    withAnimation {
+                        filterType = .camera
+                    }
+                }
                 .frame(height: 148)
 
-            List(selection: <#T##Binding<SelectionValue>#>, content: <#T##() -> Content#>)
+                Spacer()
+            }
+            .onAppear {
+                viewModel.setup(with: filterManager)
+            }
 
-            Spacer()
+            VStack {
+                Spacer()
+
+                if filterType != .none {
+                    createFilterWheelView()
+                        .transition(.move(edge: .bottom))
+                }
+            }
+            .ignoresSafeArea()
+        }
+    }
+
+    @ViewBuilder
+    private func createFilterWheelView() -> some View {
+        switch filterType {
+        case .camera:
+            FilterWheelView(text: "Camera", $viewModel.currentCamera, filters: viewModel.getFilters())
+                .onHide {
+                    withAnimation {
+                        filterType = .none
+                    }
+                }
+
+        case .rover:
+            FilterWheelView(text: "Rover", $viewModel.currentRover, filters: viewModel.getFilters())
+                .onHide {
+                    withAnimation {
+                        filterType = .none
+                    }
+                }
+
+        case .none:
+            EmptyView()
         }
     }
 }
 
 #Preview {
     HomeView()
+        .environmentObject(FilterManager())
 }

@@ -9,5 +9,13 @@ extension Font {
         static var bodyTwo: Font {
             Font.system(size: 17, weight: .bold)
         }
+
+        static var titleTwo: Font {
+            Font.system(size: 22, weight: .bold)
+        }
+
+        static var title: Font {
+            Font.system(size: 22, weight: .regular)
+        }
     }
 }
