@@ -4,9 +4,11 @@ import SwiftUI
 struct LeadDoIt_Test_TaskApp: App {
     var body: some Scene {
         WindowGroup {
-            PreloaderView()
-                .environmentObject(FilterManager())
-                .environmentObject(NetworkManager())
+            NavigationView {
+                PreloaderView()
+                    .environmentObject(FilterManager())
+                    .environmentObject(NetworkManager())
+            }
         }
     }
 }

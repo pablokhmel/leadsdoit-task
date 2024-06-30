@@ -35,4 +35,8 @@ extension Image {
     static var empty: Image {
         Image("empty")
     }
+
+    static var closeWhite: Image {
+        Image("Close-white")
+    }
 }

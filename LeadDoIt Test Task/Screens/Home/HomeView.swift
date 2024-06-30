@@ -7,6 +7,8 @@ struct HomeView: View {
     @EnvironmentObject private var networkManager: NetworkManager
 
     @State var filterType: FilterType = .none
+    @State private var isDetailViewActive = false
+    @State private var selectedImageUrl: String?
 
     var body: some View {
         ZStack {
@@ -47,6 +49,7 @@ struct HomeView: View {
                         ScrollView {
                             LazyVStack {
                                 ForEach(viewModel.images) { image in
+                                    
                                     MarsPhotoRowView(model: image)
                                         .padding(10)
                                         .padding(.leading, 6)
@@ -54,6 +57,10 @@ struct HomeView: View {
                                             RoundedRectangle(cornerRadius: 30)
                                                 .fill(Color.backgroundOne)
                                                 .shadow(radius: 16, y: 3)
+                                        }
+                                        .onTapGesture {
+                                            selectedImageUrl = image.imageUrl
+                                            isDetailViewActive = true
                                         }
                                         .onAppear {
                                             if image == viewModel.images.last {
@@ -103,6 +110,16 @@ struct HomeView: View {
                 }
             }
         }
+        .background(
+            NavigationLink(
+                destination: 
+                    DetailPhotoView(image: selectedImageUrl ?? "")
+                    .navigationBarBackButtonHidden(),
+                isActive: $isDetailViewActive
+            ) {
+                EmptyView()
+            }
+        )
     }
 
     @ViewBuilder
@@ -131,7 +148,9 @@ struct HomeView: View {
 }
 
 #Preview {
-    HomeView()
-        .environmentObject(FilterManager())
-        .environmentObject(NetworkManager())
+    NavigationView {
+        HomeView()
+            .environmentObject(FilterManager())
+            .environmentObject(NetworkManager())
+    }
 }
