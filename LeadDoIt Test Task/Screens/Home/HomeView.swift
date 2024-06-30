@@ -34,7 +34,7 @@ struct HomeView: View {
                     }
 
                 VStack {
-                    if viewModel.isFetchingImages {
+                    if viewModel.isFetchingImages && viewModel.images.count == 0 {
                         ProgressView()
                     } else if viewModel.images.count == 0 {
                         VStack(spacing: 20) {
@@ -55,6 +55,15 @@ struct HomeView: View {
                                                 .fill(Color.backgroundOne)
                                                 .shadow(radius: 16, y: 3)
                                         }
+                                        .onAppear {
+                                            if image == viewModel.images.last {
+                                                viewModel.fetchImages()
+                                            }
+                                        }
+                                }
+
+                                if viewModel.isFetchingImages {
+                                    ProgressView()
                                 }
                             }
                             .ignoresSafeArea()

@@ -6,7 +6,7 @@ protocol Filterable: Hashable {
     var asParameter: String { get }
 }
 
-struct MarsImageModel: Identifiable {
+struct MarsImageModel: Identifiable, Equatable {
     let rover: RoverType
     let camera: CameraType
     let date: Date

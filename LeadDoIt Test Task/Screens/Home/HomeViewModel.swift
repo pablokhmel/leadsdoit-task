@@ -7,6 +7,7 @@ class HomeViewModel: ObservableObject {
     private var currentPage = 1
     private var filterManager: IFilterManager?
     private var imagesFetcher: FetchMarsImages?
+    private var fetchedAllImages = false
 
     @Published var isFetchingImages = false
 
@@ -33,16 +34,20 @@ class HomeViewModel: ObservableObject {
 
     func filtresChanged() {
         currentPage = 1
+        fetchedAllImages = false
         images = []
         fetchImages()
     }
 
     func fetchImages() {
-        Task { [weak self] in
-            guard let self = self, !self.isFetchingImages else { return }
+        guard !isFetchingImages, !fetchedAllImages else { return }
+        isFetchingImages = true
 
-            self.isFetchingImages = true
+        Task { [weak self] in
+            guard let self = self else { return }
+
             let images = try await imagesFetcher?.fetchImages(self.filterOptions, page: &currentPage)
+            self.fetchedAllImages = (images ?? []).count < 25
 
             await MainActor.run {
                 self.images += images ?? []
