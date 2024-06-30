@@ -6,6 +6,7 @@ struct HomeHeaderView: View {
     var roverAction: () -> Void = {}
     var cameraAction: () -> Void = {}
     var dateAction: () -> Void = {}
+    var addFilterAction: () -> Void = {}
 
     private var plusButtonSide: CGFloat = 38
     private var showCameraFilter = false
@@ -45,7 +46,7 @@ struct HomeHeaderView: View {
                     }
 
                     Button {
-
+                        addFilterAction()
                     } label: {
                         Image.addCircle
                             .background {
@@ -84,6 +85,12 @@ struct HomeHeaderView: View {
     func dateAction(_ action: @escaping () -> Void) -> HomeHeaderView {
         var copy = self
         copy.dateAction = action
+        return copy
+    }
+
+    func addFilterAction(_ action: @escaping () -> Void) -> HomeHeaderView {
+        var copy = self
+        copy.addFilterAction = action
         return copy
     }
 }

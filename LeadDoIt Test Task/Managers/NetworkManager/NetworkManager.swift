@@ -1,6 +1,6 @@
 import SwiftUI
 
-class NetworkManager: ObservableObject, FetchMarsImages {
+class NetworkManager: ObservableObject, IFetchMarsImages {
     private let apiKey = "aBr3FZdRsaWUefigmcvrHaRWAY2oBjWDLuB8e9bC"
     private let urlHeadString = "https://api.nasa.gov/mars-photos/api/v1/rovers"
 
@@ -13,14 +13,11 @@ class NetworkManager: ObservableObject, FetchMarsImages {
 
         let (data, response) = try await URLSession.shared.data(from: url)
 
-        print(url.absoluteString)
-
         if (response as? HTTPURLResponse)?.statusCode == 200 {
             let decoder = JSONDecoder()
             let photosDataModels = try decoder.decode(MarsPhotosResponse.self, from: data)
 
             let photosModels = photosDataModels.photos.map { MarsImageModel($0) }
-            print(photosModels.count)
 
             if photosModels.count < 25 && recursionDepth != 0 {
                 page = page + 1

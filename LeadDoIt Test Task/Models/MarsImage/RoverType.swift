@@ -1,6 +1,6 @@
 import Foundation
 
-enum RoverType: CaseIterable, Filterable {
+enum RoverType: String, CaseIterable, Filterable {
     case all, curiosity, opportunity, spirit
 
     init(_ name: String) {

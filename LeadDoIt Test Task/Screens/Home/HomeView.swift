@@ -5,10 +5,12 @@ struct HomeView: View {
 
     @EnvironmentObject private var filterManager: FilterManager
     @EnvironmentObject private var networkManager: NetworkManager
+    @EnvironmentObject private var coreDataManager: CoreDataManager
 
-    @State var filterType: FilterType = .none
+    @State private var filterType: FilterType = .none
     @State private var isDetailViewActive = false
     @State private var selectedImageUrl: String?
+    @State private var showAlert = false
 
     var body: some View {
         ZStack {
@@ -29,11 +31,25 @@ struct HomeView: View {
                             filterType = .date
                         }
                     }
+                    .addFilterAction {
+                        showAlert = true
+                    }
                     .disabled(filterType != .none)
                     .frame(height: 148)
                     .customOnChange(of: viewModel.filterOptions) {
                         viewModel.filtresChanged()
                     }
+                    .alert(isPresented: $showAlert) {
+                        Alert(
+                            title: Text("Save Filters"),
+                            message: Text("The current filters and the date you have chosen can be saved to the filter history."),
+                            primaryButton: .default(Text("Save")) {
+                                viewModel.saveCurrentFilter()
+                            },
+                            secondaryButton: .cancel()
+                        )
+                    }
+
 
                 VStack {
                     if viewModel.isFetchingImages && viewModel.images.count == 0 {
@@ -49,7 +65,7 @@ struct HomeView: View {
                         ScrollView {
                             LazyVStack {
                                 ForEach(viewModel.images) { image in
-                                    
+
                                     MarsPhotoRowView(model: image)
                                         .padding(10)
                                         .padding(.leading, 6)
@@ -81,8 +97,9 @@ struct HomeView: View {
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
             .onAppear {
-                viewModel.setup(with: filterManager)
-                viewModel.setup(for: networkManager)
+                viewModel.setup(filterManager: filterManager)
+                viewModel.setup(fetchMarsImages: networkManager)
+                viewModel.setup(realmAddable: coreDataManager)
             }
             .disabled(filterType != .none)
 
@@ -95,6 +112,20 @@ struct HomeView: View {
                 }
             }
             .ignoresSafeArea()
+
+            VStack {
+                Spacer()
+
+                HStack {
+                    Spacer()
+
+                    NavigationLink {
+
+                    } label: {
+                        
+                    }
+                }
+            }
 
             if filterType == .date {
                 Color.black.opacity(0.4)
@@ -112,7 +143,7 @@ struct HomeView: View {
         }
         .background(
             NavigationLink(
-                destination: 
+                destination:
                     DetailPhotoView(image: selectedImageUrl ?? "")
                     .navigationBarBackButtonHidden(),
                 isActive: $isDetailViewActive
@@ -152,5 +183,6 @@ struct HomeView: View {
         HomeView()
             .environmentObject(FilterManager())
             .environmentObject(NetworkManager())
+            .environmentObject(CoreDataManager())
     }
 }

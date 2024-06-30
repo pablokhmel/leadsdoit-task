@@ -1,6 +1,6 @@
 import Foundation
 
-enum CameraType: CaseIterable, Filterable {
+enum CameraType: String, CaseIterable, Filterable {
     case all, fhaz, rhaz, mast, chemcam, mahli, mardi, navcam, pancam, minites
 
     init(_ name: String) {

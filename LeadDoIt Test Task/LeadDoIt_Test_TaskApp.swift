@@ -8,6 +8,7 @@ struct LeadDoIt_Test_TaskApp: App {
                 PreloaderView()
                     .environmentObject(FilterManager())
                     .environmentObject(NetworkManager())
+                    .environmentObject(CoreDataManager())
             }
         }
     }

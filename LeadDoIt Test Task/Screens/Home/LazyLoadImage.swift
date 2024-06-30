@@ -49,7 +49,6 @@ struct LazyLoadImage: View {
                 }
             } catch {
                 hasError = true
-                print(String(describing: error))
             }
 
         }

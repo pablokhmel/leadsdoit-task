@@ -5,19 +5,26 @@ class HomeViewModel: ObservableObject {
     @Published var images: [MarsImageModel] = []
 
     private var currentPage = 1
+
     private var filterManager: IFilterManager?
-    private var imagesFetcher: FetchMarsImages?
+    private var imagesFetcher: IFetchMarsImages?
+    private var realmAddable: ICoreDataAddable?
+
     private var fetchedAllImages = false
 
     @Published var isFetchingImages = false
 
-    func setup(with filterManager: IFilterManager) {
+    func setup(filterManager: IFilterManager) {
         self.filterManager = filterManager
     }
 
-    func setup(for fetchMarsImages: FetchMarsImages) {
+    func setup(fetchMarsImages: IFetchMarsImages) {
         self.imagesFetcher = fetchMarsImages
         fetchImages()
+    }
+
+    func setup(realmAddable: ICoreDataAddable) {
+        self.realmAddable = realmAddable
     }
 
     func getFilters<T : Filterable>() -> [T] {
@@ -54,5 +61,9 @@ class HomeViewModel: ObservableObject {
                 self.isFetchingImages = false
             }
         }
+    }
+
+    func saveCurrentFilter() {
+        print("Save Filters")
     }
 }
