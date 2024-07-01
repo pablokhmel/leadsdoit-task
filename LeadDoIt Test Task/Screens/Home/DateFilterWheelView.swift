@@ -36,6 +36,7 @@ struct DateFilterWheelView: View {
                 .labelsHidden()
                 .frame(height: 250)
                 .frame(maxWidth: .infinity)
+                .preferredColorScheme(.light)
         }
         .padding(20)
         .background {
@@ -43,6 +44,7 @@ struct DateFilterWheelView: View {
                 .fill (Color.backgroundOne)
                 .shadow(radius: 16, y: 3)
         }
+        .foregroundStyle(Color.layerOne)
     }
 
     public func hide(_ action: @escaping () -> Void) -> DateFilterWheelView {

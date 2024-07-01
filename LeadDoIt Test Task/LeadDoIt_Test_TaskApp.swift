@@ -9,6 +9,7 @@ struct LeadDoIt_Test_TaskApp: App {
                     .environmentObject(FilterManager())
                     .environmentObject(NetworkManager())
                     .environmentObject(CoreDataManager())
+                    .preferredColorScheme(.light)
             }
         }
     }

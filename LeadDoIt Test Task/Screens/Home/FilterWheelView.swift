@@ -51,9 +51,11 @@ struct FilterWheelView<T : Filterable> : View {
                     Text(filter.asString)
                         .font(filter == filterToShow ? Font.CustomFonts.titleTwo : Font.CustomFonts.title)
                 }
+
             }
             .pickerStyle(.wheel)
             .frame(height: 250)
+            .preferredColorScheme(.light)
 
         }
         .padding(20)
@@ -62,6 +64,7 @@ struct FilterWheelView<T : Filterable> : View {
                 .fill(Color.backgroundOne)
                 .shadow(color: Color.black.opacity(0.1), radius: 14, y: -4)
         }
+        .foregroundStyle(Color.layerOne)
     }
 
     public func onHide(_ action: @escaping () -> Void) -> FilterWheelView {

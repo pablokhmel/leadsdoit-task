@@ -20,7 +20,9 @@
 		FA4069182C2DF70A00B61EAB /* Font+.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4069172C2DF70A00B61EAB /* Font+.swift */; };
 		FA8253DB2C3089F800287B2E /* MarsPhotoRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8253DA2C3089F800287B2E /* MarsPhotoRowView.swift */; };
 		FA8253DD2C308A1D00287B2E /* LazyLoadImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8253DC2C308A1D00287B2E /* LazyLoadImage.swift */; };
-		FAB8C6E42C3200F700B70AC2 /* FIlterModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FAB8C6E22C3200F700B70AC2 /* FIlterModel.xcdatamodeld */; };
+		FAB8C6E42C3200F700B70AC2 /* FilterModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FAB8C6E22C3200F700B70AC2 /* FilterModel.xcdatamodeld */; };
+		FAB8C6E72C320B1700B70AC2 /* FilterHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB8C6E62C320B1700B70AC2 /* FilterHistory.swift */; };
+		FAB8C6E92C320E0500B70AC2 /* CoreDataDeletable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB8C6E82C320E0500B70AC2 /* CoreDataDeletable.swift */; };
 		FABD094C2C30143C007A87B6 /* RoverType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABD094B2C30143C007A87B6 /* RoverType.swift */; };
 		FABD094E2C301453007A87B6 /* CameraType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABD094D2C301453007A87B6 /* CameraType.swift */; };
 		FABD09502C301B12007A87B6 /* UnevenRoundedRectangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABD094F2C301B12007A87B6 /* UnevenRoundedRectangle.swift */; };
@@ -58,7 +60,9 @@
 		FA40691B2C2DFBFE00B61EAB /* LeadDoIt-Test-Task-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "LeadDoIt-Test-Task-Info.plist"; sourceTree = SOURCE_ROOT; };
 		FA8253DA2C3089F800287B2E /* MarsPhotoRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarsPhotoRowView.swift; sourceTree = "<group>"; };
 		FA8253DC2C308A1D00287B2E /* LazyLoadImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LazyLoadImage.swift; sourceTree = "<group>"; };
-		FAB8C6E32C3200F700B70AC2 /* FIlterModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FIlterModel.xcdatamodel; sourceTree = "<group>"; };
+		FAB8C6E32C3200F700B70AC2 /* FilterModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FilterModel.xcdatamodel; sourceTree = "<group>"; };
+		FAB8C6E62C320B1700B70AC2 /* FilterHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterHistory.swift; sourceTree = "<group>"; };
+		FAB8C6E82C320E0500B70AC2 /* CoreDataDeletable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataDeletable.swift; sourceTree = "<group>"; };
 		FABD094B2C30143C007A87B6 /* RoverType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoverType.swift; sourceTree = "<group>"; };
 		FABD094D2C301453007A87B6 /* CameraType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraType.swift; sourceTree = "<group>"; };
 		FABD094F2C301B12007A87B6 /* UnevenRoundedRectangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnevenRoundedRectangle.swift; sourceTree = "<group>"; };
@@ -192,6 +196,7 @@
 		FAB8C6E52C320AC800B70AC2 /* FilterHistory */ = {
 			isa = PBXGroup;
 			children = (
+				FAB8C6E62C320B1700B70AC2 /* FilterHistory.swift */,
 			);
 			path = FilterHistory;
 			sourceTree = "<group>";
@@ -235,7 +240,8 @@
 			children = (
 				FABE53DE2C318DCD00B9830C /* CoreDataManager.swift */,
 				FABE53E22C31999900B9830C /* ICoreDataAddable.swift */,
-				FAB8C6E22C3200F700B70AC2 /* FIlterModel.xcdatamodeld */,
+				FAB8C6E22C3200F700B70AC2 /* FilterModel.xcdatamodeld */,
+				FAB8C6E82C320E0500B70AC2 /* CoreDataDeletable.swift */,
 			);
 			path = CoreDataManager;
 			sourceTree = "<group>";
@@ -347,6 +353,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAB8C6E92C320E0500B70AC2 /* CoreDataDeletable.swift in Sources */,
 				FABD09552C303BB9007A87B6 /* DateFilterWheelView.swift in Sources */,
 				FAC043602C2EF9DC007CA504 /* IFilterManager.swift in Sources */,
 				FA4069162C2DF68000B61EAB /* HomeHeaderView.swift in Sources */,
@@ -362,11 +369,12 @@
 				FA40690F2C2DEF4F00B61EAB /* LottieView.swift in Sources */,
 				FAC151332C2E0C9900ADB44B /* MarsImageModel.swift in Sources */,
 				FABE53DF2C318DCD00B9830C /* CoreDataManager.swift in Sources */,
+				FAB8C6E72C320B1700B70AC2 /* FilterHistory.swift in Sources */,
 				FAC043622C2F073B007CA504 /* FilterWheelView.swift in Sources */,
 				FABD094C2C30143C007A87B6 /* RoverType.swift in Sources */,
 				FABD095A2C30572A007A87B6 /* FilterManager.swift in Sources */,
 				FAC0435D2C2EF97E007CA504 /* FilterButton.swift in Sources */,
-				FAB8C6E42C3200F700B70AC2 /* FIlterModel.xcdatamodeld in Sources */,
+				FAB8C6E42C3200F700B70AC2 /* FilterModel.xcdatamodeld in Sources */,
 				FABD09532C301CED007A87B6 /* FilterOptions.swift in Sources */,
 				FA4069142C2DF62400B61EAB /* HomeView.swift in Sources */,
 				FAC1512D2C2E044B00ADB44B /* Image+.swift in Sources */,
@@ -605,14 +613,13 @@
 /* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
-		FAB8C6E22C3200F700B70AC2 /* FIlterModel.xcdatamodeld */ = {
+		FAB8C6E22C3200F700B70AC2 /* FilterModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				FAB8C6E32C3200F700B70AC2 /* FIlterModel.xcdatamodel */,
+				FAB8C6E32C3200F700B70AC2 /* FilterModel.xcdatamodel */,
 			);
-			currentVersion = FAB8C6E32C3200F700B70AC2 /* FIlterModel.xcdatamodel */;
-			name = FIlterModel.xcdatamodeld;
-			path = "/Users/macbook/GitHub/LeadDoIt Test Task/LeadDoIt Test Task/Managers/CoreDataManager/FIlterModel.xcdatamodeld";
+			currentVersion = FAB8C6E32C3200F700B70AC2 /* FilterModel.xcdatamodel */;
+			path = FilterModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

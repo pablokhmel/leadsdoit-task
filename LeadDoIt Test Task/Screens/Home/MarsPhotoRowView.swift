@@ -6,9 +6,9 @@ struct MarsPhotoRowView: View {
     var body: some View {
         HStack {
             VStack(alignment: .leading, spacing: 6) {
-                PhotoRowInfoText(title: "Rover", text: model.rover.asString)
-                PhotoRowInfoText(title: "Camera", text: model.camera.asString)
-                PhotoRowInfoText(title: "Date", text: model.dateAsString)
+                TextWithTitle(title: "Rover", text: model.rover.asString)
+                TextWithTitle(title: "Camera", text: model.camera.asString)
+                TextWithTitle(title: "Date", text: model.dateAsString)
             }
 
             Spacer()
@@ -20,7 +20,7 @@ struct MarsPhotoRowView: View {
     }
 }
 
-struct PhotoRowInfoText: View {
+struct TextWithTitle: View {
     let title: String
     let text: String
 
@@ -30,5 +30,6 @@ struct PhotoRowInfoText: View {
             .foregroundColor(Color.layerTwo) +
         Text(text)
             .font(.CustomFonts.bodyTwo)
+            .foregroundColor(Color.layerOne)
     }
 }

@@ -127,18 +127,39 @@ struct HomeView: View {
                 }
             }
 
+            VStack {
+                Spacer()
+
+                HStack {
+                    Spacer()
+
+                    NavigationLink {
+                        FilterHistory(coreDataManager, currentFilter: $viewModel.filterOptions)
+                            .navigationBarBackButtonHidden()
+                    } label: {
+                        ZStack {
+                            Circle()
+                                .fill(Color.accentOne)
+                                .frame(width: 70)
+
+                            Image.history
+                        }
+
+                    }
+                }
+                .padding(20)
+            }
+
             if filterType == .date {
                 Color.black.opacity(0.4)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .ignoresSafeArea()
 
-                ZStack {
-                    DateFilterWheelView(date: $viewModel.filterOptions.date)
-                        .hide {
-                            filterType = .none
-                        }
-                        .padding(20)
-                }
+                DateFilterWheelView(date: $viewModel.filterOptions.date)
+                    .hide {
+                        filterType = .none
+                    }
+                .padding(20)
             }
         }
         .background(
@@ -150,6 +171,9 @@ struct HomeView: View {
             ) {
                 EmptyView()
             }
+        )
+        .background(
+            Color.backgroundOne
         )
     }
 

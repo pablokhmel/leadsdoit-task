@@ -39,4 +39,13 @@ extension Image {
     static var closeWhite: Image {
         Image("Close-white")
     }
+
+    static var backButton: Image {
+        Image("backButton")
+    }
+
+    static var history: Image {
+        Image("History")
+    }
 }
+

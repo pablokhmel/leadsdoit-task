@@ -11,6 +11,7 @@ struct PreloaderView: View {
         VStack {
             if isActive {
                 HomeView()
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
             } else {
                 ZStack {
                     VStack {

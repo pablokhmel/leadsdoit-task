@@ -7,7 +7,7 @@ class CoreDataManager: ObservableObject {
     @Published var viewContext: NSManagedObjectContext
 
     init() {
-        persistentContainer = NSPersistentContainer(name: "ModelName") // Replace "ModelName" with your actual model name
+        persistentContainer = NSPersistentContainer(name: "FilterModel") // Replace "ModelName" with your actual model name
         persistentContainer.loadPersistentStores { description, error in
             if let error = error {
                 fatalError("Unable to load persistent stores: \(error)")
@@ -35,31 +35,6 @@ class CoreDataManager: ObservableObject {
             }
         }
         saveContext()
-    }
-
-    func load() -> [FilterOptions] {
-        let fetchRequest: NSFetchRequest<FilterOptionsEntity> = FilterOptionsEntity.fetchRequest()
-        do {
-            let filterOptionsEntities = try viewContext.fetch(fetchRequest)
-            return filterOptionsEntities.map { $0.toFilterOptions() }
-        } catch {
-            print("Failed to fetch FilterOptions: \(error)")
-            return []
-        }
-    }
-
-    func delete(filterOptions: FilterOptions) {
-        let fetchRequest: NSFetchRequest<FilterOptionsEntity> = FilterOptionsEntity.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "camera == %@ AND rover == %@ AND date == %@", filterOptions.camera.rawValue, filterOptions.rover.rawValue, filterOptions.date as NSDate)
-        do {
-            let filterOptionsEntities = try viewContext.fetch(fetchRequest)
-            if let filterOptionsEntity = filterOptionsEntities.first {
-                viewContext.delete(filterOptionsEntity)
-                saveContext()
-            }
-        } catch {
-            print("Failed to fetch FilterOptions for deletion: \(error)")
-        }
     }
 
     private func saveContext() {
@@ -91,6 +66,33 @@ extension CoreDataManager: ICoreDataAddable {
             saveContext()
         } catch {
             print("Failed to fetch FilterOptions for saving: \(error)")
+        }
+    }
+}
+
+extension CoreDataManager: ICoreDataDeletable {
+    func load() -> [FilterOptions] {
+        let fetchRequest: NSFetchRequest<FilterOptionsEntity> = FilterOptionsEntity.fetchRequest()
+        do {
+            let filterOptionsEntities = try viewContext.fetch(fetchRequest)
+            return filterOptionsEntities.map { $0.toFilterOptions() }
+        } catch {
+            print("Failed to fetch FilterOptions: \(error)")
+            return []
+        }
+    }
+
+    func delete(filterOptions: FilterOptions) {
+        let fetchRequest: NSFetchRequest<FilterOptionsEntity> = FilterOptionsEntity.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "camera == %@ AND rover == %@ AND date == %@", filterOptions.camera.rawValue, filterOptions.rover.rawValue, filterOptions.date as NSDate)
+        do {
+            let filterOptionsEntities = try viewContext.fetch(fetchRequest)
+            if let filterOptionsEntity = filterOptionsEntities.first {
+                viewContext.delete(filterOptionsEntity)
+                saveContext()
+            }
+        } catch {
+            print("Failed to fetch FilterOptions for deletion: \(error)")
         }
     }
 }

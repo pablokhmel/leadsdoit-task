@@ -8,7 +8,7 @@ class HomeViewModel: ObservableObject {
 
     private var filterManager: IFilterManager?
     private var imagesFetcher: IFetchMarsImages?
-    private var realmAddable: ICoreDataAddable?
+    private var coreDataAddable: ICoreDataAddable?
 
     private var fetchedAllImages = false
 
@@ -24,7 +24,7 @@ class HomeViewModel: ObservableObject {
     }
 
     func setup(realmAddable: ICoreDataAddable) {
-        self.realmAddable = realmAddable
+        self.coreDataAddable = realmAddable
     }
 
     func getFilters<T : Filterable>() -> [T] {
@@ -64,6 +64,6 @@ class HomeViewModel: ObservableObject {
     }
 
     func saveCurrentFilter() {
-        print("Save Filters")
+        coreDataAddable?.save(filterOptions: filterOptions)
     }
 }
